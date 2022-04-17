@@ -52,9 +52,9 @@ const App = () => {
 
   // console.log(todayDate);
   // year
-  // let pastDate = todayDate.toString().replace("2022", "2021");
+  let pastDate = todayDate.toString().replace("2022", "2021");
   // month
-  let pastDate = todayDate.toString().replace("04", "03");
+  // let pastDate = todayDate.toString().replace("04", "03");
   // console.log(pastDate);
 
   const fetchChartData = (ticker) => {
@@ -89,6 +89,8 @@ const App = () => {
                 data.results[0].c) *
               100
             ).toFixed(2),
+            threeMonthClose: data.results[data.results.length - 66].c,
+            oneMonthClose: data.results[data.results.length - 22].c,
           },
         ]);
         // } else {
@@ -109,7 +111,8 @@ const App = () => {
         justifyContent="center"
         alignItems="center"
       >
-        <Heading color="#7c72ff">StockChartz</Heading>
+        {/* #7c72ff */}
+        <Heading color="white">StockChartz</Heading>
       </Box>
 
       <Box
@@ -137,7 +140,7 @@ const App = () => {
             fullResults={fullResults}
             dataError={dataError}
           />
-          <ChangeStats fullResults={fullResults} />
+          <ChangeStats fullResults={fullResults} timePeriod={timePeriod}/>
         </Box>
 
         <Box
