@@ -5,6 +5,7 @@ const ChartTop = ({ tickers, deleteTicker, setTimePeriod, timePeriod }) => {
 
   const time = {
     year: '1 YR',
+    threeMonth: '3 MO',
     month: '1 MO'
   };
 
@@ -43,6 +44,16 @@ const ChartTop = ({ tickers, deleteTicker, setTimePeriod, timePeriod }) => {
               onClick={() => setTimePeriod(time.year)}
             >
              {time.year}
+            </Text>
+          </ListItem>
+          <ListItem marginRight="1%" marginLeft="1%">
+            <Text
+              color="white"
+              paddingTop={{ sm: "1%" }}
+              paddingBottom={{ sm: "1.5%" }}
+              onClick={() => setTimePeriod(time.threeMonth)}
+            >
+             {time.threeMonth}
             </Text>
           </ListItem>
           <ListItem marginRight="1%" marginLeft="1%">

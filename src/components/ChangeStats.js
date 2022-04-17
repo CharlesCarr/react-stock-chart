@@ -1,7 +1,7 @@
 import Stats from "./Stats";
 import { Box } from "@chakra-ui/react";
 
-const ChangeStats = ({ fullResults }) => {
+const ChangeStats = ({ fullResults, timePeriod }) => {
   console.log(fullResults);
   return (
     <Box
@@ -29,6 +29,9 @@ const ChangeStats = ({ fullResults }) => {
             ticker={result.ticker}
             change={result.percentChange}
             lastClose={result.lastClose}
+            threeMonthClose={result.threeMonthClose}
+            oneMonthClose={result.threeMonthClose}
+            timePeriod={timePeriod}
           />
         ))
       )}

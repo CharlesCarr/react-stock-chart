@@ -13,7 +13,6 @@ import {
 
 const Rechart = ({ fullResults, convertDateFormat, tickers, timePeriod }) => {
   const [data, setData] = useState([]);
-  const [oneYearData, setOneYearData] = useState([]);
 
   useEffect(() => {
     if (fullResults.length === 1) {
@@ -28,40 +27,53 @@ const Rechart = ({ fullResults, convertDateFormat, tickers, timePeriod }) => {
           };
           return obj;
         });
-        return objArr;
+        console.log(objArr);
+
+        if (timePeriod === "1 YR") {
+          return objArr;
+        } else if (timePeriod === "3 MO") {
+          return objArr.slice(objArr.length - 66, objArr.length - 1);
+        } else if (timePeriod === "1 MO") {
+          return objArr.slice(objArr.length - 22, objArr.length - 1);
+        }
       });
     } else {
       for (let i = 1; i < fullResults.length; i++) {
         let arr = fullResults[i].dayResultsArr;
         var ticker = fullResults[i].ticker;
         let prices = arr.map((day) => ({ [ticker]: day.c.toFixed(2) }));
+        console.log(prices);
 
         setData((prev) => {
           let final = prev.map((obj, i) => ({
             ...obj,
             [ticker]: prices[i][ticker],
           }));
-          return final;
+
+          if (timePeriod === "1 YR") {
+            return final;
+          } else if (timePeriod === "3 MO") {
+            return final.slice(final.length - 66, final.length - 1);
+            // return final.slice(0, 10);
+          } else if (timePeriod === "1 MO") {
+            return final.slice(final.length - 22, final.length - 1);
+          }
+
+          
         });
+
+        // setData((prev) => {
+        //   let final = prev.map((obj, i) => ({
+        //     ...obj,
+        //     [ticker]: prices[i][ticker],
+        //   }));
+        //   return final;
+        // });
       }
     }
-  }, [fullResults]);
+  }, [fullResults, timePeriod]);
 
-  // storing the initial full year data in separate state variable
-  // only update when fullResults (new tickers are added)
-  // useEffect(() => {
-  //     setOneYearData(() => data);
-  // }, [fullResults]);
-
-
-  // logic for setting data to display different subsets for different time periods
-  // useEffect(() => {
-  //   if (timePeriod === "1 YR" && data !== oneYearData) {
-  //     setData(() => oneYearData);
-  //   } else if (timePeriod === "1 MO") {
-  //     setData((oneYearData) => oneYearData.slice(0, 5));
-  //   }
-  // }, [oneYearData, timePeriod]);
+  console.log(data);
 
   // logic for finding smallest / largest closes to use for domain for recharts y axis
   const findMinMax = (i) => {
@@ -92,6 +104,16 @@ const Rechart = ({ fullResults, convertDateFormat, tickers, timePeriod }) => {
     }
   };
 
+  let xInterval;
+
+  if (timePeriod === "1 YR") {
+    xInterval = 25;
+  } else if (timePeriod === "3 MO") {
+    xInterval = 10;
+  } else if (timePeriod === "1 MO") {
+    xInterval = 5;
+  }
+
   return (
     <Box
       display="flex"
@@ -120,10 +142,10 @@ const Rechart = ({ fullResults, convertDateFormat, tickers, timePeriod }) => {
             // stroke="#2d324d"
             stroke="white"
             dataKey="date"
-            interval={5}
+            interval={xInterval}
             axisLine={false}
             tickLine={false}
-            tickFormatter={(date) => date.substring(6, date.length)}
+            tickFormatter={(date) => date.substring(5, date.length)}
           />
           {/* dataKey={ticker} */}
           <YAxis
