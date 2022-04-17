@@ -35,12 +35,15 @@ const ChartTop = ({ tickers, deleteTicker, setTimePeriod, timePeriod }) => {
           display="flex"
           marginBottom={{ sm: "1%" }}
           justifyContent="center"
+          paddingTop="2%"
         >
           <ListItem marginRight="1%" marginLeft="1%">
             <Text
               color="white"
               paddingTop={{ sm: "1%" }}
               paddingBottom={{ sm: "1.5%" }}
+              textDecoration={timePeriod === "1 YR" && "underline"}
+              cursor="pointer"
               onClick={() => setTimePeriod(time.year)}
             >
              {time.year}
@@ -51,6 +54,8 @@ const ChartTop = ({ tickers, deleteTicker, setTimePeriod, timePeriod }) => {
               color="white"
               paddingTop={{ sm: "1%" }}
               paddingBottom={{ sm: "1.5%" }}
+              cursor="pointer"
+              textDecoration={timePeriod === "3 MO" && "underline"}
               onClick={() => setTimePeriod(time.threeMonth)}
             >
              {time.threeMonth}
@@ -61,6 +66,8 @@ const ChartTop = ({ tickers, deleteTicker, setTimePeriod, timePeriod }) => {
               color="white"
               paddingTop={{ sm: "1%" }}
               paddingBottom={{ sm: "1.5%" }}
+              cursor="pointer"
+              textDecoration={timePeriod === "1 MO" && "underline"}
               onClick={() => setTimePeriod(time.month)}
             >
                {time.month}

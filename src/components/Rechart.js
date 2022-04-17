@@ -54,7 +54,6 @@ const Rechart = ({ fullResults, convertDateFormat, tickers, timePeriod }) => {
             return final;
           } else if (timePeriod === "3 MO") {
             return final.slice(final.length - 66, final.length - 1);
-            // return final.slice(0, 10);
           } else if (timePeriod === "1 MO") {
             return final.slice(final.length - 22, final.length - 1);
           }
@@ -107,7 +106,7 @@ const Rechart = ({ fullResults, convertDateFormat, tickers, timePeriod }) => {
   let xInterval;
 
   if (timePeriod === "1 YR") {
-    xInterval = 25;
+    xInterval = 50;
   } else if (timePeriod === "3 MO") {
     xInterval = 10;
   } else if (timePeriod === "1 MO") {
@@ -118,14 +117,14 @@ const Rechart = ({ fullResults, convertDateFormat, tickers, timePeriod }) => {
     <Box
       display="flex"
       justifyContent="center"
-      alignItems="flex-end"
+      alignItems="center"
       paddingTop="2"
       color="black"
       h="100%"
       w="100%"
       marginTop={{ md: "2rem" }}
     >
-      <ResponsiveContainer width="90%" aspect={2}>
+      <ResponsiveContainer width="100%" height="90%">
         <AreaChart data={data}>
           <defs>
             <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
