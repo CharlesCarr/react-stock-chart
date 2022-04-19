@@ -26,4 +26,4 @@ This is version 1 of an ongoing project. I have already started working on featu
 
 ### Hosting
 
-Hosting with Firebase (will be adding live link later)
+Hosting with Firebase (https://react-stock-chart.web.app/)
