@@ -2,7 +2,6 @@ import Stats from "./Stats";
 import { Box } from "@chakra-ui/react";
 
 const ChangeStats = ({ fullResults, timePeriod }) => {
-  console.log(fullResults);
   return (
     <Box
       borderRadius="lg"
@@ -11,10 +10,7 @@ const ChangeStats = ({ fullResults, timePeriod }) => {
       flexDirection={{ lg: "column"}}
       alignItems="center"
       justifyContent={{ sm:"space-around", md:"space-around", lg:"flex-start"}}
-      // h="70%"
       h={{ sm:"100%", md: "100%", lg: "100%"}}
-      // maxW="md"
-      // maxW={{ lg: "md"}}
       w={{ sm:"60%", md: "62.5%", lg: "100%"}}
       marginLeft={{ sm:"2%", md: "2.5%"}}
       bg="componentbg"

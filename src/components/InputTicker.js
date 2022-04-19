@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Text, Box, Button, Input, FormControl, FormLabel } from "@chakra-ui/react";
-// import { whiten } from "@chakra-ui/theme-tools";
 
 const InputTicker = ({ fetchChartData, addTicker, fullResults, dataError }) => {
   const [ticker, setTicker] = useState("");
@@ -17,10 +16,9 @@ const InputTicker = ({ fetchChartData, addTicker, fullResults, dataError }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // Limiting to only 4 inputs
+
     if (fullResults.length < 2) {
       if (ticker === "") {
-        console.log("testing error");
         setIsError(true);
       } else {
         let capsTicker = ticker.toUpperCase();
@@ -45,14 +43,10 @@ const InputTicker = ({ fetchChartData, addTicker, fullResults, dataError }) => {
       display="flex"
       alignItems="center"
       justifyContent="center"
-      // maxW="md"
       w={{ sm: "30%", md: "25%", lg: "100%"}}
       maxW={{lg: "sm"}}
-      // h="25%"
       h={{ sm:"100%", md: "100%", lg: "35%"}}
-      // bg="componentbg"
       bg="#7c72ff"
-      // marginBottom="5%"
       marginBottom={{ lg: "5%"}}
       borderRadius="lg"
       p={{ md:"6", lg:"0"}}
@@ -60,7 +54,6 @@ const InputTicker = ({ fetchChartData, addTicker, fullResults, dataError }) => {
     >
       <form onSubmit={submitHandler}>
         <FormControl>
-          {/* bg="#5F6791" */}
           <Box
             display="flex"
             alignItems="center"
@@ -76,8 +69,7 @@ const InputTicker = ({ fetchChartData, addTicker, fullResults, dataError }) => {
               onChange={handleChange}
               maxW="50%"
               variant="flushed"
-              // autofocus not working
-              autoFocus="autofocus"
+              // autoFocus="autofocus"
               h="4"
             />
           </Box>
@@ -87,7 +79,6 @@ const InputTicker = ({ fetchChartData, addTicker, fullResults, dataError }) => {
 
           <Box display="flex" alignItems="center" justifyContent="center">
             <Button
-              // onClick={submitHandler}
               variant="primaryOutline"
               type="submit"
               marginTop="4"

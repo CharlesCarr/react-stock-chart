@@ -5,24 +5,16 @@ import ChangeStats from "./components/ChangeStats";
 import ChartTop from "./components/ChartTop";
 import NullChart from "./components/NullChart";
 import { Box, Heading } from "@chakra-ui/react";
+import apiKey from "./api";
 
 const App = () => {
   // make this an array of results and then add each api fetched data object to it (array of objects)
-  // const [fullResults, setFullResults] = useState(null);
-  const [fullResults, setFullResults] = useState([
-    // {
-    //   ticker: "EXAMPLE",
-    //   // will be an array (each day returned) of objects (pricing info)
-    //   dayResultsArr: [{ t: 1618372800000, c: 280}, { t: 1618372800050, c: 333}, { t: 1618372800100, c: 888}],
-    // }
-  ]);
+  const [fullResults, setFullResults] = useState([]);
   const [todayDate, setTodayDate] = useState(new Date());
   const [tickers, setTickers] = useState([]);
   const [dataError, setDataError] = useState(false);
   const [timePeriod, setTimePeriod] = useState("1 YR");
-  console.log(timePeriod);
 
-  // potential opportunity to add context here to shorten this? w. all time stuff going in there then passing down
   useEffect(() => {
     setTodayDate(convertDateFormat(todayDate));
   }, []);
@@ -50,18 +42,12 @@ const App = () => {
     return convertedDate;
   };
 
-  // console.log(todayDate);
   // year
   let pastDate = todayDate.toString().replace("2022", "2021");
   // month
   // let pastDate = todayDate.toString().replace("04", "03");
-  // console.log(pastDate);
 
-  const fetchChartData = (ticker) => {
-    // moving forward can add variables for dates and add to url that way
-    // will be able to add dates through parameters that are in the function called in input.tsx
-    // hardcoding for now to test
-    let apiKey = "XCvfXTvpPVHyWKQ9UrxFmh9I3yd1WHLA";
+  const fetchChartData = (ticker) => {    
     let url = `https://api.polygon.io/v2/aggs/ticker/${ticker}/range/1/day/${pastDate}/${todayDate}?adjusted=true&sort=asc&limit=400&apiKey=`;
     let qString = url + apiKey;
 
@@ -72,9 +58,6 @@ const App = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
-        // Need to fix this b/c not currently working ****************
-        // if (data.resultsCount > 0) {
         // creating own state object with the data I need from data fetched from API
         setFullResults([
           ...fullResults,
@@ -89,19 +72,13 @@ const App = () => {
                 data.results[0].c) *
               100
             ).toFixed(2),
-            threeMonthClose: data.results[data.results.length - 66].c,
-            oneMonthClose: data.results[data.results.length - 22].c,
+            // threeMonthClose: data.results[data.results.length - 66].c,
+            // oneMonthClose: data.results[data.results.length - 22].c,
           },
         ]);
-        // } else {
-        //   setDataError(true);
-        //   console.log(dataError);
-        // }
       })
       .catch(console.error);
   };
-
-  console.log(fullResults);
 
   return (
     <Box h="100vh" m="0" bg="background" color="white">

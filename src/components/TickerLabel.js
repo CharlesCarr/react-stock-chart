@@ -4,8 +4,6 @@ const TickerLabel = ({ ticker, deleteTicker }) => {
   return (
     <ListItem mr="3%">
       <Tag
-        //   size={size}
-        //   key={size}
         borderRadius="full"
         variant="solid"
         bg="#7c72ff"

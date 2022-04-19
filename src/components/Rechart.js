@@ -27,14 +27,13 @@ const Rechart = ({ fullResults, convertDateFormat, tickers, timePeriod }) => {
           };
           return obj;
         });
-        console.log(objArr);
 
         if (timePeriod === "1 YR") {
           return objArr;
-        } else if (timePeriod === "3 MO") {
-          return objArr.slice(objArr.length - 66, objArr.length - 1);
-        } else if (timePeriod === "1 MO") {
-          return objArr.slice(objArr.length - 22, objArr.length - 1);
+        // } else if (timePeriod === "3 MO") {
+        //   return objArr.slice(objArr.length - 66, objArr.length - 1);
+        // } else if (timePeriod === "1 MO") {
+        //   return objArr.slice(objArr.length - 22, objArr.length - 1);
         }
       });
     } else {
@@ -42,7 +41,6 @@ const Rechart = ({ fullResults, convertDateFormat, tickers, timePeriod }) => {
         let arr = fullResults[i].dayResultsArr;
         var ticker = fullResults[i].ticker;
         let prices = arr.map((day) => ({ [ticker]: day.c.toFixed(2) }));
-        console.log(prices);
 
         setData((prev) => {
           let final = prev.map((obj, i) => ({
@@ -52,15 +50,14 @@ const Rechart = ({ fullResults, convertDateFormat, tickers, timePeriod }) => {
 
           if (timePeriod === "1 YR") {
             return final;
-          } else if (timePeriod === "3 MO") {
-            return final.slice(final.length - 66, final.length - 1);
-          } else if (timePeriod === "1 MO") {
-            return final.slice(final.length - 22, final.length - 1);
+          // } else if (timePeriod === "3 MO") {
+          //   return final.slice(final.length - 66, final.length - 1);
+          // } else if (timePeriod === "1 MO") {
+          //   return final.slice(final.length - 22, final.length - 1);
           }
-
-          
         });
 
+        // Old code - pre adding multiple time periods
         // setData((prev) => {
         //   let final = prev.map((obj, i) => ({
         //     ...obj,
@@ -71,8 +68,6 @@ const Rechart = ({ fullResults, convertDateFormat, tickers, timePeriod }) => {
       }
     }
   }, [fullResults, timePeriod]);
-
-  console.log(data);
 
   // logic for finding smallest / largest closes to use for domain for recharts y axis
   const findMinMax = (i) => {
@@ -107,10 +102,10 @@ const Rechart = ({ fullResults, convertDateFormat, tickers, timePeriod }) => {
 
   if (timePeriod === "1 YR") {
     xInterval = 50;
-  } else if (timePeriod === "3 MO") {
-    xInterval = 10;
-  } else if (timePeriod === "1 MO") {
-    xInterval = 5;
+  // } else if (timePeriod === "3 MO") {
+  //   xInterval = 10;
+  // } else if (timePeriod === "1 MO") {
+  //   xInterval = 5;
   }
 
   return (
@@ -138,7 +133,6 @@ const Rechart = ({ fullResults, convertDateFormat, tickers, timePeriod }) => {
           </defs>
           <CartesianGrid opacity={0.1} vertical={false} />
           <XAxis
-            // stroke="#2d324d"
             stroke="white"
             dataKey="date"
             interval={xInterval}
@@ -146,9 +140,7 @@ const Rechart = ({ fullResults, convertDateFormat, tickers, timePeriod }) => {
             tickLine={false}
             tickFormatter={(date) => date.substring(5, date.length)}
           />
-          {/* dataKey={ticker} */}
           <YAxis
-            // stroke="#2d324d"
             stroke="white"
             axisLine={false}
             tickLine={false}
@@ -159,7 +151,6 @@ const Rechart = ({ fullResults, convertDateFormat, tickers, timePeriod }) => {
           />
           {tickers.length > 1 ? (
             <YAxis
-              // stroke="#2d324d"
               stroke="white"
               axisLine={false}
               tickLine={false}

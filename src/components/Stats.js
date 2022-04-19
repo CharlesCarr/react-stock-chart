@@ -25,15 +25,14 @@ const Stats = ({
 
   if (timePeriod === "1 YR") {
     change = change;
-  } else if (timePeriod === "3 MO") {
-    change = (((threeMonthClose - lastClose) / lastClose) * 100).toFixed(2);
-  } else if (timePeriod === "1 MO") {
-    change = (((oneMonthClose - lastClose) / lastClose) * 100).toFixed(2);
+  // } else if (timePeriod === "3 MO") {
+  //   change = (((threeMonthClose - lastClose) / lastClose) * 100).toFixed(2);
+  // } else if (timePeriod === "1 MO") {
+  //   change = (((oneMonthClose - lastClose) / lastClose) * 100).toFixed(2);
   }
   return (
     <Box
       h={{ sm: "90%", md: "95%", lg: "50%" }}
-      // p={{ sm:"6"}}
       w={{ sm: "42.5%", md: "47.5%", lg: "100%" }}
       display="flex"
       alignItems="center"
