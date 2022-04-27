@@ -15,7 +15,7 @@ const InputTicker = ({
   dataError,
   setDataError,
   ticker,
-  setTicker
+  setTicker,
 }) => {
   const [isError, setIsError] = useState(false);
   const [isLimit, setIsLimit] = useState(false);
@@ -77,23 +77,40 @@ const InputTicker = ({
               onChange={handleChange}
               maxW="50%"
               variant="flushed"
-              // autoFocus="autofocus"
               h="4"
             />
           </Box>
 
           {dataError && (
-            <Text textAlign="center" w="100%" marginTop="-10px" marginBottom="-12px" fontSize={{ sm: "0.5rem", md: "0.6rem" }}>
+            <Text
+              textAlign="center"
+              w="100%"
+              marginTop="-10px"
+              marginBottom="-12px"
+              fontSize={{ sm: "0.5rem", md: "0.6rem" }}
+            >
               Ticker not found.
             </Text>
           )}
           {isError && (
-            <Text textAlign="center" w="100%" marginTop="-10px" marginBottom="-12px" fontSize={{ sm: "0.5rem", md: "0.6rem" }}>
+            <Text
+              textAlign="center"
+              w="100%"
+              marginTop="-10px"
+              marginBottom="-12px"
+              fontSize={{ sm: "0.5rem", md: "0.6rem" }}
+            >
               No ticker input.
             </Text>
           )}
           {isLimit && (
-            <Text textAlign="center" w="100%" marginTop="-10px" marginBottom="-12px" fontSize={{ sm: "0.5rem", md: "0.6rem" }}>
+            <Text
+              textAlign="center"
+              w="100%"
+              marginTop="-10px"
+              marginBottom="-12px"
+              fontSize={{ sm: "0.5rem", md: "0.6rem" }}
+            >
               Ticker limit met.
             </Text>
           )}

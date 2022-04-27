@@ -59,14 +59,13 @@ const App = () => {
       .then((response) => {
         console.log(response);
         if (!response.ok) throw new Error(response.statusText);
-        // add UI for input error - 'Ticker not found' - maybe call function in InputTicker.js
         return response.json();
       })
       .then((data) => {
         console.log(data.queryCount);
 
+        // if ticker entered returns no results
         if (data.queryCount === 0) {
-          console.log("Error with input ticker");
           setDataError(true);
         } else {
           setDataError(false);
@@ -85,8 +84,6 @@ const App = () => {
                   data.results[0].c) *
                 100
               ).toFixed(2),
-              // threeMonthClose: data.results[data.results.length - 66].c,
-              // oneMonthClose: data.results[data.results.length - 22].c,
             },
           ]);
 
@@ -104,7 +101,6 @@ const App = () => {
         justifyContent="center"
         alignItems="center"
       >
-        {/* #7c72ff */}
         <Heading color="white">StockChartz</Heading>
       </Box>
 
@@ -117,13 +113,10 @@ const App = () => {
         marginTop={{ sm: "2.5%", md: "0", lg: "0.5%" }}
       >
         <Box
-          // w="20%"
           w={{ sm: "100%", md: "100%", lg: "20%" }}
-          // h="80vh"
           h={{ sm: "17.5%", md: "17vh", lg: "80vh" }}
           display="flex"
           flexDirection={{ lg: "column" }}
-          // justifyContent="space-between"
           justifyContent={{ sm: "center", md: "center" }}
           alignItems={{ sm: "center", md: "center" }}
         >

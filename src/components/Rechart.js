@@ -30,10 +30,6 @@ const Rechart = ({ fullResults, convertDateFormat, tickers, timePeriod }) => {
 
         if (timePeriod === "1 YR") {
           return objArr;
-        // } else if (timePeriod === "3 MO") {
-        //   return objArr.slice(objArr.length - 66, objArr.length - 1);
-        // } else if (timePeriod === "1 MO") {
-        //   return objArr.slice(objArr.length - 22, objArr.length - 1);
         }
       });
     } else {
@@ -50,21 +46,8 @@ const Rechart = ({ fullResults, convertDateFormat, tickers, timePeriod }) => {
 
           if (timePeriod === "1 YR") {
             return final;
-          // } else if (timePeriod === "3 MO") {
-          //   return final.slice(final.length - 66, final.length - 1);
-          // } else if (timePeriod === "1 MO") {
-          //   return final.slice(final.length - 22, final.length - 1);
           }
         });
-
-        // Old code - pre adding multiple time periods
-        // setData((prev) => {
-        //   let final = prev.map((obj, i) => ({
-        //     ...obj,
-        //     [ticker]: prices[i][ticker],
-        //   }));
-        //   return final;
-        // });
       }
     }
   }, [fullResults, timePeriod]);
@@ -102,10 +85,6 @@ const Rechart = ({ fullResults, convertDateFormat, tickers, timePeriod }) => {
 
   if (timePeriod === "1 YR") {
     xInterval = 50;
-  // } else if (timePeriod === "3 MO") {
-  //   xInterval = 10;
-  // } else if (timePeriod === "1 MO") {
-  //   xInterval = 5;
   }
 
   return (

@@ -2,11 +2,10 @@ import TickerLabel from "./TickerLabel";
 import { Text, Box, UnorderedList, ListItem } from "@chakra-ui/react";
 
 const ChartTop = ({ tickers, deleteTicker, setTimePeriod, timePeriod }) => {
-
   const time = {
-    year: '1 YR',
-    threeMonth: '3 MO',
-    month: '1 MO'
+    year: "1 YR",
+    threeMonth: "3 MO",
+    month: "1 MO",
   };
 
   return (
@@ -36,37 +35,10 @@ const ChartTop = ({ tickers, deleteTicker, setTimePeriod, timePeriod }) => {
               color="white"
               paddingTop={{ sm: "1%" }}
               paddingBottom={{ sm: "1.5%" }}
-              // textDecoration={timePeriod === "1 YR" && "underline"}
-              // cursor="pointer"
-              // onClick={() => setTimePeriod(time.year)}
             >
-             {time.year}
+              {time.year}
             </Text>
           </ListItem>
-          {/* <ListItem marginRight="1%" marginLeft="1%">
-            <Text
-              color="white"
-              paddingTop={{ sm: "1%" }}
-              paddingBottom={{ sm: "1.5%" }}
-              cursor="pointer"
-              textDecoration={timePeriod === "3 MO" && "underline"}
-              onClick={() => setTimePeriod(time.threeMonth)}
-            >
-             {time.threeMonth}
-            </Text>
-          </ListItem>
-          <ListItem marginRight="1%" marginLeft="1%">
-            <Text
-              color="white"
-              paddingTop={{ sm: "1%" }}
-              paddingBottom={{ sm: "1.5%" }}
-              cursor="pointer"
-              textDecoration={timePeriod === "1 MO" && "underline"}
-              onClick={() => setTimePeriod(time.month)}
-            >
-               {time.month}
-            </Text>
-          </ListItem> */}
         </UnorderedList>
       </Box>
       <Box>

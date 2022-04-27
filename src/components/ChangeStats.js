@@ -5,14 +5,18 @@ const ChangeStats = ({ fullResults, timePeriod }) => {
   return (
     <Box
       borderRadius="lg"
-      p={{md:"1", lg: "6"}}
+      p={{ md: "1", lg: "6" }}
       display="flex"
-      flexDirection={{ lg: "column"}}
+      flexDirection={{ lg: "column" }}
       alignItems="center"
-      justifyContent={{ sm:"space-around", md:"space-around", lg:"flex-start"}}
-      h={{ sm:"100%", md: "100%", lg: "100%"}}
-      w={{ sm:"60%", md: "62.5%", lg: "100%"}}
-      marginLeft={{ sm:"2%", md: "2.5%"}}
+      justifyContent={{
+        sm: "space-around",
+        md: "space-around",
+        lg: "flex-start",
+      }}
+      h={{ sm: "100%", md: "100%", lg: "100%" }}
+      w={{ sm: "60%", md: "62.5%", lg: "100%" }}
+      marginLeft={{ sm: "2%", md: "2.5%" }}
       bg="componentbg"
       boxShadow="dark-lg"
     >

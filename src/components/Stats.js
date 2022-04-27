@@ -25,10 +25,6 @@ const Stats = ({
 
   if (timePeriod === "1 YR") {
     change = change;
-  // } else if (timePeriod === "3 MO") {
-  //   change = (((threeMonthClose - lastClose) / lastClose) * 100).toFixed(2);
-  // } else if (timePeriod === "1 MO") {
-  //   change = (((oneMonthClose - lastClose) / lastClose) * 100).toFixed(2);
   }
   return (
     <Box

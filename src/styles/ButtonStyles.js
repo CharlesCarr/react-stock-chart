@@ -17,8 +17,6 @@ export const ButtonStyles = {
     primaryOutline: (props) => ({
       bg: "dark",
       boxShadow: "md",
-      // border: "1px solid",
-      // borderColor: "white",
       color: "white",
       _hover: {
         boxShadow: "xl",
