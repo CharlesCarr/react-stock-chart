@@ -16,9 +16,6 @@ const App = () => {
   const [timePeriod, setTimePeriod] = useState("1 YR");
   const [ticker, setTicker] = useState("");
 
-  console.log(dataError);
-  console.log(tickers);
-
   useEffect(() => {
     setTodayDate(convertDateFormat(todayDate));
   }, []);
@@ -57,13 +54,10 @@ const App = () => {
 
     fetch(qString)
       .then((response) => {
-        console.log(response);
         if (!response.ok) throw new Error(response.statusText);
         return response.json();
       })
       .then((data) => {
-        console.log(data.queryCount);
-
         // if ticker entered returns no results
         if (data.queryCount === 0) {
           setDataError(true);

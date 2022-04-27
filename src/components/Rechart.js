@@ -120,7 +120,7 @@ const Rechart = ({ fullResults, convertDateFormat, tickers, timePeriod }) => {
             tickFormatter={(date) => date.substring(5, date.length)}
           />
           <YAxis
-            stroke="white"
+            stroke="#7c72ff"
             axisLine={false}
             tickLine={false}
             tickCount={5}
@@ -130,7 +130,7 @@ const Rechart = ({ fullResults, convertDateFormat, tickers, timePeriod }) => {
           />
           {tickers.length > 1 ? (
             <YAxis
-              stroke="white"
+              stroke="#2d324d"
               axisLine={false}
               tickLine={false}
               tickCount={5}
