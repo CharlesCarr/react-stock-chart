@@ -83,7 +83,7 @@ const InputTicker = ({
             borderRadius="md"
             p="1.5"
           >
-            <FormLabel htmlFor="ticker">Ticker:</FormLabel>
+            <FormLabel htmlFor="ticker" >Ticker:</FormLabel>
             <Input
               type="text"
               id="ticker"
@@ -134,6 +134,7 @@ const InputTicker = ({
               variant="primaryOutline"
               type="submit"
               marginTop="4"
+              marginBottom="2"
               w={{ sm: "90%" }}
               fontSize={{ sm: "0.8rem" }}
             >
