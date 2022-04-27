@@ -1,17 +1,27 @@
 import { useState } from "react";
-import { Text, Box, Button, Input, FormControl, FormLabel } from "@chakra-ui/react";
+import {
+  Text,
+  Box,
+  Button,
+  Input,
+  FormControl,
+  FormLabel,
+} from "@chakra-ui/react";
 
-const InputTicker = ({ fetchChartData, addTicker, fullResults, dataError }) => {
-  const [ticker, setTicker] = useState("");
+const InputTicker = ({
+  fetchChartData,
+  addTicker,
+  fullResults,
+  dataError,
+  setDataError,
+  ticker,
+  setTicker
+}) => {
   const [isError, setIsError] = useState(false);
   const [isLimit, setIsLimit] = useState(false);
 
   const handleChange = (e) => {
-    if (dataError === true) {
-      setIsError(true);
-    } else {
-      setTicker(e.target.value);
-    }
+    setTicker(e.target.value);
   };
 
   const submitHandler = (e) => {
@@ -25,8 +35,6 @@ const InputTicker = ({ fetchChartData, addTicker, fullResults, dataError }) => {
         setIsError(false);
         // will need to pass the value into a function that calls the API
         fetchChartData(capsTicker);
-        // will need to call a function in App.js to add this ticker to the array of all tickers
-        addTicker(capsTicker);
         // clear input field
         setTicker("");
       }
@@ -43,13 +51,13 @@ const InputTicker = ({ fetchChartData, addTicker, fullResults, dataError }) => {
       display="flex"
       alignItems="center"
       justifyContent="center"
-      w={{ sm: "30%", md: "25%", lg: "100%"}}
-      maxW={{lg: "sm"}}
-      h={{ sm:"100%", md: "100%", lg: "35%"}}
+      w={{ sm: "30%", md: "25%", lg: "100%" }}
+      maxW={{ lg: "sm" }}
+      h={{ sm: "100%", md: "100%", lg: "35%" }}
       bg="#7c72ff"
-      marginBottom={{ lg: "5%"}}
+      marginBottom={{ lg: "5%" }}
       borderRadius="lg"
-      p={{ md:"6", lg:"0"}}
+      p={{ md: "6", lg: "0" }}
       boxShadow="dark-lg"
     >
       <form onSubmit={submitHandler}>
@@ -74,16 +82,29 @@ const InputTicker = ({ fetchChartData, addTicker, fullResults, dataError }) => {
             />
           </Box>
 
-          {isError && <Text textAlign="center" fontSize={{sm: "0.7rem", md: "0.75rem"}}>Ticker not found.</Text>}
-          {isLimit && <Text textAlign="center" fontSize={{sm: "0.7rem", md: "0.75rem"}}>Ticker limit met.</Text>}
+          {dataError && (
+            <Text textAlign="center" fontSize={{ sm: "0.7rem", md: "0.75rem" }}>
+              Ticker not found.
+            </Text>
+          )}
+          {isError && (
+            <Text textAlign="center" fontSize={{ sm: "0.7rem", md: "0.75rem" }}>
+              Ticker not found.
+            </Text>
+          )}
+          {isLimit && (
+            <Text textAlign="center" fontSize={{ sm: "0.7rem", md: "0.75rem" }}>
+              Ticker limit met.
+            </Text>
+          )}
 
           <Box display="flex" alignItems="center" justifyContent="center">
             <Button
               variant="primaryOutline"
               type="submit"
               marginTop="4"
-              w={{sm: "90%"}}
-              fontSize={{ sm:"0.8rem"}}
+              w={{ sm: "90%" }}
+              fontSize={{ sm: "0.8rem" }}
             >
               View Chart
             </Button>

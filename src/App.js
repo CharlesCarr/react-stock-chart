@@ -14,6 +14,10 @@ const App = () => {
   const [tickers, setTickers] = useState([]);
   const [dataError, setDataError] = useState(false);
   const [timePeriod, setTimePeriod] = useState("1 YR");
+  const [ticker, setTicker] = useState("");
+
+  console.log(dataError);
+  console.log(tickers);
 
   useEffect(() => {
     setTodayDate(convertDateFormat(todayDate));
@@ -47,35 +51,47 @@ const App = () => {
   // month
   // let pastDate = todayDate.toString().replace("04", "03");
 
-  const fetchChartData = (ticker) => {    
+  const fetchChartData = (ticker) => {
     let url = `https://api.polygon.io/v2/aggs/ticker/${ticker}/range/1/day/${pastDate}/${todayDate}?adjusted=true&sort=asc&limit=400&apiKey=`;
     let qString = url + apiKey;
 
     fetch(qString)
       .then((response) => {
+        console.log(response);
         if (!response.ok) throw new Error(response.statusText);
         // add UI for input error - 'Ticker not found' - maybe call function in InputTicker.js
         return response.json();
       })
       .then((data) => {
-        // creating own state object with the data I need from data fetched from API
-        setFullResults([
-          ...fullResults,
-          {
-            ticker: data.ticker,
-            // will be an array (each day returned) of objects (pricing info)
-            dayResultsArr: data.results,
-            lastClose: data.results[data.results.length - 1].c,
-            // create percent change from first day price to last day price
-            percentChange: (
-              ((data.results[data.results.length - 1].c - data.results[0].c) /
-                data.results[0].c) *
-              100
-            ).toFixed(2),
-            // threeMonthClose: data.results[data.results.length - 66].c,
-            // oneMonthClose: data.results[data.results.length - 22].c,
-          },
-        ]);
+        console.log(data.queryCount);
+
+        if (data.queryCount === 0) {
+          console.log("Error with input ticker");
+          setDataError(true);
+        } else {
+          setDataError(false);
+
+          // creating own state object with the data I need from data fetched from API
+          setFullResults([
+            ...fullResults,
+            {
+              ticker: data.ticker,
+              // will be an array (each day returned) of objects (pricing info)
+              dayResultsArr: data.results,
+              lastClose: data.results[data.results.length - 1].c,
+              // create percent change from first day price to last day price
+              percentChange: (
+                ((data.results[data.results.length - 1].c - data.results[0].c) /
+                  data.results[0].c) *
+                100
+              ).toFixed(2),
+              // threeMonthClose: data.results[data.results.length - 66].c,
+              // oneMonthClose: data.results[data.results.length - 22].c,
+            },
+          ]);
+
+          addTicker(ticker);
+        }
       })
       .catch(console.error);
   };
@@ -116,14 +132,17 @@ const App = () => {
             addTicker={addTicker}
             fullResults={fullResults}
             dataError={dataError}
+            setDataError={setDataError}
+            ticker={ticker}
+            setTicker={setTicker}
           />
-          <ChangeStats fullResults={fullResults} timePeriod={timePeriod}/>
+          <ChangeStats fullResults={fullResults} timePeriod={timePeriod} />
         </Box>
 
         <Box
           w={{ sm: "100%", md: "100%", lg: "70%" }}
           h={{ sm: "65vh", md: "65vh", lg: "80vh" }}
-          marginTop={{ sm:"3.5%", md: "0.5%", lg: "0" }}
+          marginTop={{ sm: "3.5%", md: "0.5%", lg: "0" }}
           paddingTop={{ md: "2.5vh", lg: "0" }}
           display={{ sm: "flex", md: "flex" }}
           flexDirection={{ sm: "column", md: "column" }}
@@ -137,14 +156,19 @@ const App = () => {
             bg="componentbg"
             boxShadow="dark-lg"
           >
-            <ChartTop tickers={tickers} deleteTicker={deleteTicker} setTimePeriod={setTimePeriod} timePeriod={timePeriod} />
+            <ChartTop
+              tickers={tickers}
+              deleteTicker={deleteTicker}
+              setTimePeriod={setTimePeriod}
+              timePeriod={timePeriod}
+            />
 
             <Box
-              display={{ sm:"flex", md: "flex" }}
-              justifyContent={{ sm:"center", md: "center" }}
-              alignItems={{ sm:"center", md: "center" }}
-              w={{ sm:"100%", md: "100%" }}
-              h={{ sm:"80%", md: "80%" }}
+              display={{ sm: "flex", md: "flex" }}
+              justifyContent={{ sm: "center", md: "center" }}
+              alignItems={{ sm: "center", md: "center" }}
+              w={{ sm: "100%", md: "100%" }}
+              h={{ sm: "80%", md: "80%" }}
             >
               {fullResults.length > 0 ? (
                 <Rechart

@@ -53,7 +53,7 @@ const Stats = ({
           {ticker}
         </StatLabel>
         <StatNumber fontSize={{ sm: "0.8rem", md: "0.8rem", lg: "1.15rem" }}>
-          ${lastClose}
+          ${lastClose.toFixed(2)}
         </StatNumber>
         <StatHelpText fontSize={{ sm: "0.8rem", md: "0.8rem", lg: "1.15rem" }}>
           <StatArrow type={percentLabel} />
