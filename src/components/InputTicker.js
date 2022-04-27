@@ -29,6 +29,9 @@ const InputTicker = ({
 
     if (fullResults.length < 2) {
       if (ticker === "") {
+        // clear other errors
+        setIsLimit(false);
+        // set no input error
         setIsError(true);
       } else {
         let capsTicker = ticker.toUpperCase();
@@ -39,12 +42,23 @@ const InputTicker = ({
         setTicker("");
       }
     } else {
+      // clear other errors
+      setIsError(false);
       // set error for limit to only 2 tickers
       setIsLimit(true);
       // clear input field
       setTicker("");
     }
   };
+
+  // quick fix to create variable to check for both errors
+  // can then use to prevent duplicate error texts
+  let error;
+  if (dataError && isError) {
+    error = true;
+  } else {
+    error = false;
+  }
 
   return (
     <Box
@@ -81,7 +95,7 @@ const InputTicker = ({
             />
           </Box>
 
-          {dataError && (
+          {(dataError && !error) && (
             <Text
               textAlign="center"
               w="100%"

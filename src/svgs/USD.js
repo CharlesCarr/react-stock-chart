@@ -1,28 +1,13 @@
-import { motion } from "framer-motion";
-
 const USD = () => {
-  const svgVariants = {
-    initial: {
-      rotate: 0,
-    },
-    animate: {
-      rotate: 2,
-      yoyo: Infinity
-    }
-  };
 
   return (
-    <motion.svg
+    <svg
       x="0px"
       y="0px"
       viewBox="0 0 1000 1000"
       enableBackground="new 0 0 1000 1000"
       width="45%"
       height="45%"
-      variants={svgVariants}
-      animate="animate"
-      initial="initial"
-      transition="transition"
     >
       <g>
         <g transform="translate(0.000000,511.000000) scale(0.100000,-0.100000)">
@@ -32,7 +17,7 @@ const USD = () => {
           />
         </g>
       </g>
-    </motion.svg>
+    </svg>
   );
 };
 export default USD;
