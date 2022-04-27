@@ -83,17 +83,17 @@ const InputTicker = ({
           </Box>
 
           {dataError && (
-            <Text textAlign="center" fontSize={{ sm: "0.7rem", md: "0.75rem" }}>
+            <Text textAlign="center" w="100%" marginTop="-10px" marginBottom="-12px" fontSize={{ sm: "0.5rem", md: "0.6rem" }}>
               Ticker not found.
             </Text>
           )}
           {isError && (
-            <Text textAlign="center" fontSize={{ sm: "0.7rem", md: "0.75rem" }}>
-              Ticker not found.
+            <Text textAlign="center" w="100%" marginTop="-10px" marginBottom="-12px" fontSize={{ sm: "0.5rem", md: "0.6rem" }}>
+              No ticker input.
             </Text>
           )}
           {isLimit && (
-            <Text textAlign="center" fontSize={{ sm: "0.7rem", md: "0.75rem" }}>
+            <Text textAlign="center" w="100%" marginTop="-10px" marginBottom="-12px" fontSize={{ sm: "0.5rem", md: "0.6rem" }}>
               Ticker limit met.
             </Text>
           )}
