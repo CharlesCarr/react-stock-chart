@@ -9,7 +9,7 @@ Stock chart web application built with React.js to display 1 year price performa
 I designed and built this mobile friendly, responsive stock chart web app with React.js, including React Hooks. I used Chakra UI to style components. For the chart itself I used the Recharts library and for the stock market data I used the Polygon.io API.
 
 #### Areas of Focus 
-- Prior to building designing full app in Figma
+- Prior to building, designed full app in Figma
 - Using user input stock ticker to fetch price data with Polygon.io API
 - Client side input validation to ensure user input a valid stock ticker
 - Taking fetched API data and updating data shape to fit Recharts props to display with clean, animated UI
