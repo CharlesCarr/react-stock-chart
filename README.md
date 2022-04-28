@@ -13,14 +13,14 @@ I designed and built this mobile friendly, responsive stock chart web app with R
 - Using user input stock ticker to fetch price data with Polygon.io API
 - Client side input validation to ensure user input a valid stock ticker
 - Taking fetched API data and updating data shape to fit Recharts props to display with clean, animated UI
-- Learning more about Recharts customization to layer two stock line charts on one graph for a biaxial chart
+- Learning more about Recharts customization to layer two stock line components on one chart for a biaxial chart
 - Calculating 1yr return percentages with array methods to display in separate component
 - Styling responsive React components with Chakra UI
 
 #### Challenges
 My first challenge that I hit in development was figuring out how to properly display multiple line charts on a single graph. This was difficult because the API data was structured one way and the required props for the Recharts library was very different. Completing this for one stock was not that difficult but for two it was a rewarding challenge when I solved it.
 
-A minor challenge was also navigating through the app after it was built to determine how to best check for validation of a valid ticker that would then be called and returned with the API. The input submit function had grown quite a bit so it took a bit to navigate and correctly set a data error state to prevent the invalid ticker symbols from being displayed as labels on the chart and let the user know the input was not a valid ticker. I could have avoided this of thinking about it earlier in development rather than later.
+A minor challenge was also navigating through the app after it was built to determine how to best check for a valid ticker that would then be called and returned from the API. The input submit function had grown quite a bit so it took time to navigate and correctly set a data error state to prevent the invalid ticker symbols from being displayed as labels on the chart and let the user know the input was not a valid ticker. I could have avoided this of thinking about it earlier in development rather than later.
 
 ## Flow of Application / How to Navigate
 
@@ -37,11 +37,13 @@ I built this project for additonal practice in fetching data with APIs and worki
 ## Learnings
 
 #### Starting Over Now I Would Change
-Chakra UI was new to me so I was interested to learn. It was intuitive but I prefer more control over my styles so I would opt to use CSS modules especially when it comes to responsiveness and using media queries.
+- Chakra UI was new to me so I was interested to learn. It was intuitive but I prefer more control over my styles so I would opt to use CSS modules especially when it comes to responsiveness and using media queries.
+- Adding a better UI to the null state prior to user inputting stock tickers rather than displaying empty chart
+- Giving user ability to switch between multiple time periods of data to add granularity (could be done with cutting the original 1yr array of data to different periods to make it more dynamic rather than including in the initial input form)
 
 #### Potential Next Steps
 
-I have already started working on features to include multiple time periods of data to be displayed and make this more granular. Right now, this application supports just stocks but I am interested to compare cryptocurrency price data alongside stocks in the future as well.
+- Call a cryptocurrency API to have option to compare crypto to stock performance as well
 
 ## Hosting
 
